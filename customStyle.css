@@ -1,0 +1,20 @@
+.styledDiv {
+    min-width: 100px;
+    min-height: 100px;
+    padding: 30px;
+    border: 1px solid black;
+}
+
+.styledUl {
+    display: inline-flex;
+    list-style-type: none;
+    flex-flow: row wrap;
+}
+
+.styledLi {
+    min-width: 400px;
+    min-height: 400px;
+    padding: 5px;
+    margin: 20px;
+    border: 1px solid black;
+}

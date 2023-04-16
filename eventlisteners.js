@@ -1,14 +1,14 @@
-// document.getElementById("clickme").addEventListener("click", function xyz() {
-//     console.log("button click event");
-// });
+
+// document.getElementById("clickme").addEventListener("click", () => {
+//     console.log("button clicked");
+// })
 
 
 function attachEvent() {
-    let counter=0;
-    document.getElementById("clickme").addEventListener("click", function xyz() {
-        counter++;
-        console.log("button clicked: ", counter);
-    });
+    let count = 0;
+    document.getElementById("clickme").addEventListener("click", () => {
+        console.log("button clicked", ++count);
+    })
 }
 
 attachEvent();
