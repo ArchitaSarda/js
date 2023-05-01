@@ -21,6 +21,10 @@ Function.prototype.myBind = function(obj, ...args) {
     return (...args2) => {
         obj.fn(...args, ...args2);
     }
+    // let a = args;
+    // return function(...args2) {
+    //     obj.fn(...a, ...args2)
+    // }
 }
 
 let printName2 = printFullName.myBind(name, 'Indore', 'MP');
