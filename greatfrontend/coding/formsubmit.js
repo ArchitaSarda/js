@@ -16,7 +16,7 @@
     try {
       const formData = new FormData(formVal);
       const response = await fetch(
-        'https://www.greatfrontend.com/api/questions/contact-form',
+        formVal.action,
         {
           method: 'POST',
           headers: {

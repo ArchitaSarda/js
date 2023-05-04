@@ -11,4 +11,4 @@ function add(x){
     }
 }
 
-console.log(add(3)(4)(5).result)
+console.log(add(3)(4)(5)(6).result)

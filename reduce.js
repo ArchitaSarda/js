@@ -45,3 +45,16 @@ const namesOfAgeLessThan30 = (acc,val) => {
 
 console.log(users.filter(user => user.age > 30).map(user => user.name));
 console.log(users.reduce(namesOfAgeLessThan30,[]));
+
+
+//pollyfill
+Array.prototype.myReduce = function (callbackFn, initialValue) {
+  let output = initialValue;
+  if(!Array.isArray(this) || this.length === 0) {
+    return output;
+  }
+    for(let i=0;i<this.length;i++) {
+        output=callbackFn(output,this[i],i,this)
+    }
+    return output;
+};

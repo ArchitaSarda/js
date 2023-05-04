@@ -22,3 +22,17 @@ Array.prototype.calculate = function(logic) {
 console.log(radius.calculate(area));
 console.log(radius.calculate(circumference));
 console.log(radius.calculate(diameter));
+
+
+//better one
+Array.prototype.myMap = function (callbackFn, thisArg) {
+  const output = [];
+  for(let i=0;i<this.length;i++) {
+    if(this[i]) {
+      output.push(callbackFn.call(thisArg,this[i],i,this))
+    } else {
+      output.push(this[i])
+    }
+  }
+  return output;
+};

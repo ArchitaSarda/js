@@ -27,5 +27,12 @@ Function.prototype.myBind = function(obj, ...args) {
     // }
 }
 
+// Function.prototype.myBind = function (thisArg, ...boundArgs) {
+//   const originalMethod = this;
+//   return function (...args) {
+//     return originalMethod.apply(thisArg, [...boundArgs, ...args]);
+//   };
+// };
+
 let printName2 = printFullName.myBind(name, 'Indore', 'MP');
 printName2('India');

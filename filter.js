@@ -18,3 +18,15 @@ Array.prototype.calculate = function(logic) {
 
 console.log(arr.calculate(greaterThan4));
 console.log(arr.calculate(isEven));
+
+
+//pollyfill
+Array.prototype.myFilter = function (callbackFn, thisArg) {
+  const output = [];
+  for(let i=0; i<this.length; i++) {
+    if(this[i] && callbackFn.call(thisArg, this[i], i, this)) {
+      output.push(this[i])
+    }
+  }
+  return output;
+};

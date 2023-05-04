@@ -22,15 +22,42 @@ function isUndefined(value) {
   return value === undefined
 }
 
+function isArray(value) {
+  return Array.isArray(value);
+}
+
+function isFunction(value) {
+    return typeof value === 'function'
+}
+
+function isObject(value) {
+  if (value == null) {
+    return false;
+  }
+
+  const type = typeof value;
+  return type === 'object' || type === 'function';
+}
+
+function isPlainObject(value) {
+    if (value == null) {
+        return false;
+    }
+    const prototype = Object.getPrototypeOf(value);
+    return (prototype === null || prototype.constructor === Object);
+}
+
+
+
 console.log(isBoolean('true'));
-      console.log(isBoolean([1, 2, 3]));
-      console.log(isBoolean(new Date()));
-      console.log(isBoolean(new Error()));
-      console.log(isBoolean({ a: 1 }));
-      console.log(isBoolean(/x/));
-      console.log(isBoolean('a'));
-      console.log(isBoolean(null));
-      console.log(isBoolean(undefined));
-      console.log(isBoolean(1));
-      console.log(isBoolean(NaN));
-      console.log(isBoolean(Symbol('symbol')));
+console.log(isBoolean([1, 2, 3]));
+console.log(isBoolean(new Date()));
+console.log(isBoolean(new Error()));
+console.log(isBoolean({ a: 1 }));
+console.log(isBoolean(/x/));
+console.log(isBoolean('a'));
+console.log(isBoolean(null));
+console.log(isBoolean(undefined));
+console.log(isBoolean(1));
+console.log(isBoolean(NaN));
+console.log(isBoolean(Symbol('symbol')));

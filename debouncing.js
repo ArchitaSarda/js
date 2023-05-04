@@ -1,10 +1,9 @@
-let counter = 0;
-const getData = (context, args) => {
-    console.log("getdata", counter++);
+const getData = (args) => {
+    console.log("getdata", args);
 }
 
 
-const debounce = (fn, delayTime) => {
+const debounce = (fn, delayTime=0) => {
     let timerId;
     return (...arguments) => {
         clearTimeout(timerId);

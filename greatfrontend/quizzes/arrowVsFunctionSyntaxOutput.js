@@ -31,3 +31,7 @@ var sayNameFromWindow2 = john.sayName2;
 sayNameFromWindow2(); 
 
 // The main advantage of using an arrow function as a method inside a constructor is that the value of this gets set at the time of the function creation and can't change after that.
+
+
+
+// The value of this within arrow functions is bound to the context in which the function is created, not to the environment in which the function is called.

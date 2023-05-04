@@ -36,4 +36,19 @@ multiplyBy2(4);
 // <input onclick={handleClick(data)} />
 
 
+//definition
+// function curry(a,b,c) {
+//     return a+b+c;
+// }
+// console.log(curry(1,2,3));
+// function curry2(a) {
+//     return function(b) {
+//         return function(c) {
+//             return a+b+c;
+//         }
+//     }
+// }
+// const c2 = curry2(1)(2);
+// console.log(c2(3));
+
 

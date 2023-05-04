@@ -28,12 +28,12 @@ function sum3(n) {
 //step 2
 // function sum(n) {
 //     return function (nxt) {
-//         if (nxt) return sum(n+nxt)
+//         if (nxt !== undefined) return sum(n+nxt)
 //         else return n
 //     }
 // }
 
-const sum = n => nxt => nxt ? sum(nxt+n) : n
+const sum = n => nxt => nxt !== undefined ? sum(nxt+n) : n
 
 console.log(sum(1)(2)(3)());
 console.log(sum(1)(2)(3)(4)(5)(6)());
