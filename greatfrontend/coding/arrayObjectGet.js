@@ -1,0 +1,127 @@
+const john = {
+  profile: {
+    name: { firstName: 'John', lastName: 'Doe' },
+    age: 20,
+    gender: 'Male',
+  },
+};
+
+const jane = {
+  profile: {
+    age: 19,
+    gender: 'Female',
+  },
+};
+
+function getFirstName(user) {
+  return user.profile.name.firstName;
+}
+
+const get = (object, path, defaultValue) => {
+    if(typeof object !== "object" || object === {}) {
+        return defaultValue
+    }
+    if(typeof path === 'string') {
+        path=path.split(".");
+    }
+    let index = 0;
+    
+    while(object != null && index < path.length) {
+        object = object[path[index]];
+        index++;
+    }
+    const value = index && index === path.length ? object : undefined;
+    return value !== undefined ? value : defaultValue;  
+}
+
+
+console.log(get(john, 'profile.name.firstName')); // 'John'
+console.log(get(john, ['profile','name','firstName'])); // 'John'
+console.log(get(john, 'profile.gender')); // 'Male'
+console.log(get(jane, 'profile.name.firstName')); // undefined
+console.log(get({ a: [{ b: { c: 3 } }] }, 'a.0.b.c')); // 3
+console.log(get({ a: { b: 2, c: { d: 0 } }, c: 1 }, 'a.c.d')); //0
+console.log(get({ a: { b: 2, c: { d: { e: { foo: 3 } } } }, c: 1 }, 'a.c.d.e'));
+console.log(get({ a: { b: 2, c: { d: { e: null } } }, c: 1 }, 'a.c.d.e'));
+console.log(get({ a: [{ b: { c: 3 } }] }, 'a.b..c', "default"));
+console.log(get({ a: [{ b: { c: 3 } }] }, '', "default"));
+
+//sets, maps, dates etc not handled
+
+
+// import get from './get';
+
+// /* eslint-disable no-undef */
+// describe('get', () => {
+//   test('empty object', () => {
+//     expect(get({}, 'a')).toEqual(undefined);
+//     expect(get({}, 'a.b')).toEqual(undefined);
+//   });
+
+//   test('path contains one segment', () => {
+//     expect(get({ a: 1 }, 'a')).toEqual(1);
+//     expect(get({ c: 2 }, 'b')).toEqual(undefined);
+//     expect(get({ c: { foo: 1 } }, 'c')).toEqual({ foo: 1 });
+//   });
+
+//   test('path contains two segments', () => {
+//     expect(get({ a: { b: 2 }, c: 1 }, 'a.b')).toEqual(2);
+//     expect(get({ a: { b: 2 }, c: 1 }, 'a.c')).toEqual(undefined);
+//     expect(get({ a: { b: 2, c: { foo: 2 } } }, 'a.c')).toEqual({
+//       foo: 2,
+//     });
+//   });
+
+//   test('path contains multiple segments', () => {
+//     expect(get({ a: { b: 2, c: { d: 0 } }, c: 1 }, 'a.c.d')).toEqual(0);
+//     expect(get({ a: { b: 2 }, c: 1 }, 'a.c.e.f')).toEqual(undefined);
+//     expect(
+//       get({ a: { b: 2, c: { d: { e: { foo: 3 } } } }, c: 1 }, 'a.c.d.e'),
+//     ).toEqual({ foo: 3 });
+//   });
+
+//   test('array values', () => {
+//     expect(get({ a: { b: [1, 2, 3], c: { d: 0 } }, c: 1 }, 'a.b.2')).toEqual(3);
+//     expect(
+//       get({ a: { b: [1, 2, 3, { c: 'bar' }], c: { d: 0 } }, c: 1 }, 'a.b.3.c'),
+//     ).toEqual('bar');
+//   });
+
+//   test('uses default value', () => {
+//     expect(get({}, 'a', 1)).toEqual(1);
+//     expect(get({}, 'a.b', 2)).toEqual(2);
+//     expect(get({ c: 2 }, 'b', 3)).toEqual(3);
+//   });
+
+//   test('correctly returns null values', () => {
+//     expect(get({ b: null }, 'b')).toEqual(null);
+//     expect(get({ a: { b: 2, c: null }, c: 1 }, 'a.c')).toEqual(null);
+//     expect(
+//       get({ a: { b: 2, c: { d: { e: null } } }, c: 1 }, 'a.c.d.e'),
+//     ).toEqual(null);
+//   });
+
+//   test('path as an array', () => {
+//     expect(get({ a: { b: 2 }, c: 1 }, ['c'])).toEqual(1);
+//     expect(get({ a: { b: 2 }, c: 1 }, ['a', 'c'])).toEqual(undefined);
+//     expect(get({ a: { b: 2, c: { foo: 2 } } }, ['a', 'c'])).toEqual({
+//       foo: 2,
+//     });
+//     expect(
+//       get({ a: { b: [1, 2, 3, { c: 'bar' }], c: { d: 0 } }, c: 1 }, [
+//         'a',
+//         'b',
+//         '3',
+//         'c',
+//       ]),
+//     ).toEqual('bar');
+//   });
+
+//   test('access index of non-primitives', () => {
+//     expect(get({ a: { b: true } }, 'a.b.c')).toEqual(undefined);
+//     expect(get({ a: { b: null } }, 'a.b.c')).toEqual(undefined);
+//     expect(get({ a: { b: undefined } }, 'a.b.c')).toEqual(undefined);
+//     expect(get({ a: { b: 2 } }, 'a.b.c')).toEqual(undefined);
+//     expect(get({ a: { b: 'foo' } }, 'a.b.c')).toEqual(undefined);
+//   });
+// });

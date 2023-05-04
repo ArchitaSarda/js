@@ -1,0 +1,101 @@
+Question 8
+
+Codewriting
+
+On the PhonePe jobs profile page, we have to show a list of jobs under the relevant category.
+The data that we get from the API is an array of objects (see sample input below). The UI expects data to be formatted in a specific format.
+
+Write a formatter function in main.js which takes in the unprocessed JSON data and formats it in the structure mentioned below:
+
+Explanation of Input: Input will be an array of objects in some random order with each object having the following format:
+
+{
+    title: "Engineering",
+    id: 1,
+    children: [2, 3],
+    parent: -1,
+}
+where
+
+title is the title of the job profile
+id is the unique id of job profile
+children is an array containing ids which are immediate child for the current object
+parent is the id of which the current object is the immediate child of
+Input will be an array of above objects where:
+
+if parent = -1, that object is the top level object.
+There can be multiple top level objects as well
+each children can also have their own children and so on
+Sample Input 1
+
+[
+    {
+        title: "Engineering",
+        id: 1,
+        children: [2, 3],
+        parent: -1,
+    },
+    {
+        title: "Dev",
+        id: 2,
+        children: [4, 5],
+        parent: 1,
+    },
+    {
+        title: "QA",
+        id: 3,
+        children: [],
+        parent: 1,
+    },
+    {
+        title: "FE",
+        id: 4,
+        children: [],
+        parent: 2,
+    },
+    {
+        title: "BE",
+        id: 5,
+        children: [6],
+        parent: 2,
+    }
+]
+Here,
+
+top level elements has id = 1
+id = 1 has 2 child = 2,3
+id = 2 has 2 child = 4,5
+id = 3 has no child
+id = 4 has no child
+id = 5 has 1 child = 6
+Output
+For each of the input, the function should return an array of objects. Each object should have the following:
+
+id = id of the object
+children = list of all the children, children of children till nth level
+Sample output for above input:
+
+[
+    {
+        id: 1,
+        children: [2,3,4,5,6]
+    }
+]
+
+Explanation:
+id = 1 has children 2,3 so they are children of id = 1 as well and become part of array
+id = 2 has children 4,5 and 2 is child of 1; so 4,5 also become child of 1 and are part of final output
+id = 5 has child 6. Extending the logic 1->2->5->6; 6 will also be in output array
+
+Safe Assumptions for simplification:
+
+The ordering of elements in the output; both array of objects and children arrays won't matter. You can return the elements in any order. In the above example [2,3,4,5,6] , [6,5,4,3,2], [3,4,5,2,6], [4,3,2,6,5] = all arrays will be considered valid and equal. Similarly, if result array contains n objects, they can be in any order returned and will be considered same while evaluation
+It is also safe to assume that one id will have one immediate parent only.
+On the left hand side in the screen, you can access various files containing functions. In the file main.js, you have to complete the function transactionAggregator
+
+You can view testcases.spec.js to view our evaluation pattern.
+assert.equal(a,b) => checks whether a is equal to b by value
+
+[execution time limit] 30 seconds
+
+[memory limit] 1 GB

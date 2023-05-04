@@ -1,0 +1,140 @@
+<!-- counter -->
+<button id="clickme">
+      Click me: 0
+    </button>
+    <div>
+      <button id="subtract">-</button>
+      <span id="output">0</span>
+      <button id="add">+</button>
+    </div>
+    <script src="counter.js"></script>
+
+
+<!-- form -->
+<form
+      action="https://www.greatfrontend.com/api/questions/contact-form"
+      method="post"
+    >
+      <div>
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" name="name"/>
+      </div>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" name="email" />
+      </div>
+      <div>
+        <label htmlFor="message">Message</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+    <script src="formsubmit.js"></script>
+
+<!-- holy grail css-->
+<!-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
+<style>
+      body {
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0;
+        min-height: 100vh;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      header,
+      nav,
+      main,
+      aside,
+      footer {
+        padding: 12px;
+        text-align: center;
+      }
+      div {
+        display: flex;
+        flex-grow: 1;
+      }
+      header, footer {
+        height: 60px;
+      }
+      nav, aside {
+        width: 100px;
+        flex-shrink: 0;        
+      }
+      header {
+        background-color: tomato;
+      }
+      nav {
+        background-color: coral;
+      }
+      main {
+        background-color: moccasin;
+        flex-grow: 1;
+      }
+      aside {
+        background-color: sandybrown;
+      }
+      footer {
+        background-color: slategray;
+      }
+    </style>
+    <header>Header</header>
+    <div>
+      <nav>Left navigation</nav>
+      <main>Main</main>
+      <aside>Side navigation</aside>
+    </div>
+    <footer>Footer</footer>
+
+<!-- mortgage calculator -->
+<form id="mortgageForm">
+      <div>
+        <label for="loanAmount">
+          Loan amount: 
+          Rs. <input 
+            type="number" 
+            id="loanAmount" 
+            name="loanAmount"
+            min="1" 
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <label for="APR">
+          Annual interest rate (%): 
+          <input 
+            type="number" 
+            id="APR" 
+            name="APR" 
+            min="0.01"
+            step="0.01"
+            required
+          /> %
+        </label>
+      </div>
+      <div>
+        <label for="loanTerm">
+          Loan term (years): 
+          <input 
+            type="number" 
+            id="loanTerm" 
+            name="loanTerm" 
+            min="1"
+            required
+          /> years
+        </label>
+      </div>
+      <br>
+      <button type="submit">Calculate</button>
+    </form>
+    <br>
+    <br>
+    <div id="monthlyMortgage">Monthly mortgage payment: </div>
+    <div id="totalAmount">Total payment amount: </div>
+    <div id="totalInterest">Total interest paid: </div>
+    <script src="./mortgageCalculator.js"></script>
