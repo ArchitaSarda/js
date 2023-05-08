@@ -38,7 +38,7 @@ console.log(users.reduce(ageDistribution,{}));
 
 const namesOfAgeLessThan30 = (acc,val) => {
     const {age, name} = val;
-    if(age > 30)
+    if(age < 30)
         acc.push(name);
     return acc;
 }

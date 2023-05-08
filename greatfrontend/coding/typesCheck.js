@@ -47,6 +47,13 @@ function isPlainObject(value) {
     return (prototype === null || prototype.constructor === Object);
 }
 
+//for object -
+// We need to
+// Test the object is an Object.
+// Test the object is not null.
+// Test it is not an array.
+// Test it is not a function.
+
 
 
 console.log(isBoolean('true'));

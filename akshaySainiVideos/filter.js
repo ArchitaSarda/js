@@ -30,3 +30,17 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
   }
   return output;
 };
+
+
+const divisibleBy2 = val => val%2 === 0
+const divisibleBy3 = val => val%3 === 0
+
+const divisibleByN = (n=1) => {
+    return (val) => val%n === 0
+}
+
+console.log(arr.filter(divisibleBy2));
+console.log(arr.filter(divisibleBy3));
+
+const divisibleBy4 = divisibleByN(4);
+console.log(arr.filter(divisibleBy4));

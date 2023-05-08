@@ -36,3 +36,13 @@ Array.prototype.myMap = function (callbackFn, thisArg) {
   }
   return output;
 };
+
+//OR
+
+Array.prototype.myMap = function(cbF,thisArg) {
+    const output = [];
+    for(let i=0;i<this.length;i++) {
+        output.push(cbF.call(thisArg,this[i],i,this))
+    }
+    return output;
+}

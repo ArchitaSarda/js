@@ -38,4 +38,5 @@ const sum = n => nxt => nxt !== undefined ? sum(nxt+n) : n
 console.log(sum(1)(2)(3)());
 console.log(sum(1)(2)(3)(4)(5)(6)());
 console.log(sum(1)(2)(3)(4)(5)(6)(7)(8)(9)());
+console.log(sum());
 
