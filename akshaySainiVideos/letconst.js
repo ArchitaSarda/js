@@ -44,4 +44,3 @@ const f = 19;
 console.log(d);
 console.log(e);
 console.log(f);
-
