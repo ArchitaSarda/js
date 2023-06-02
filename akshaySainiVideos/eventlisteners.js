@@ -24,7 +24,5 @@
 // }
 
 // function myFunction() {
-//   console.log(Math.random());
+//   console.log(Math.ceil(Math.random()*10));
 // }
-
-

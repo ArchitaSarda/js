@@ -1,8 +1,8 @@
-document.querySelector("#category").addEventListener("click", (e) => {
-    console.log(e, e.target.getAttribute("key"), e.target.id);
-    if(e.target.tagName == "LI")
-        window.location.href = `/${e.target.getAttribute("key")}`
-})
+// document.querySelector("#category").addEventListener("click", (e) => {
+//     console.log(e, e.target.getAttribute("key"), e.target.id);
+//     if(e.target.tagName == "LI")
+//         window.location.href = `/${e.target.getAttribute("key")}`
+// })
 
 
 // document.querySelector("#fields").addEventListener("keyup", (e) => {

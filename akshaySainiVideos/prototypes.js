@@ -1,3 +1,4 @@
+//for checking prototypes
 let arr = ["qwe","iop"];
 
 var arr2 = [1,2,3,4];

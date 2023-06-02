@@ -3,7 +3,7 @@ const cart2 = [];
 console.log("line1");
 function createOrder(cart) {
     const promise = new Promise((resolve, reject) => {
-        if(cart.length > 1) {
+        if(cart.length > 0) {
             resolve({
                 success: true,
                 msg: "cart created",

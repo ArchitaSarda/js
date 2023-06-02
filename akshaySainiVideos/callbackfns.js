@@ -1,13 +1,15 @@
-function a(b) {
-    console.log(b);
-    b();
-}
+// function a(b) {
+//     console.log(b);
+//     b();
+// }
 
-a(function b() {
-    console.log("hello");
-})
+// a(function b() {
+//     console.log("hello");
+// })
 
 
-setTimeout( ()=> {
-    console.log("settimeout");
-}, 1000);
+// setTimeout( ()=> {
+//     console.log("settimeout");
+// }, 1000);
+
+
