@@ -52,18 +52,19 @@ const output = {
     "user_emergencyContact_1_phone": 889613240
 }
 
-let finalObj = {};
-
-const flattenObj = (obj,parent) => {
-    for(let key in obj) {
-        if(typeof obj[key] === 'object') {
-            flattenObj(obj[key],`${parent}_${key}`)
-        } else {
-            finalObj[`${parent}_${key}`] = obj[key];
-            // finalObj[parent+"_"+key] = obj[key]
-        }
-    }
+const flattenObj = (obj) => {
+  const finalObj = {};
+  const flatten = (data,parent) => {
+    Object.keys(data).forEach(val => {
+      if(data[val] && typeof data[val] === 'object') {
+        flatten(data[val], `${parent}_${val}`)
+      } else {
+        finalObj[`${parent}_${val}`] = data[val]
+      }
+    })
+  }
+  flatten(obj,"user")
+  return finalObj;
 }
 
-flattenObj(user, "user");
-console.log(finalObj);
+console.log(flattenObj(user));

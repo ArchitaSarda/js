@@ -1,0 +1,9 @@
+Visa is building a new feature to manage the mid-year and end-of-year performance cycle, within the Employee Management System. The Employee Management System is a 3rd party vendor product, hosted within the Visa data center. The package contains a UI component, application tier, and database with related schema.
+
+The Visa mid and year-end performance cycle differs from the 3rd party out of the box solution and will require custom coding. You've been asked to design the mid and year-end process to support the following features and workflow:
+
+Ability for an employee to enter yearly goals
+Ability for a manager to review, edit and approve
+Ability for an employee to write mid-year and year-end self appraisal
+Ability for a manager to write mid-year check-in and final year-end appraisal
+Ability for a manager to submit a year-end rating

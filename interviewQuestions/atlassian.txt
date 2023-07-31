@@ -1,0 +1,92 @@
+document.querySelector("#timeStamp").innerHTML =  Date().toLocaleString()
+
+
+//fetchAllFeatures
+
+// returns the state of *all* features for current user
+function fetchAllFeatures() {
+ // in reality, this would have been a `fetch` call:
+ // `fetch("/api/features/all")`
+ return new Promise(resolve => {
+ const sampleFeatures = {
+ "extended-summary": true,
+ "feedback-dialog": false
+ };
+ setTimeout(resolve, 100, sampleFeatures);
+ });
+}
+
+
+
+
+//getFeatureState
+// param - permission for a feature
+
+async function getFeatureState(feature) {
+  try {
+    const permissions = window.localStorage.getItem("featurPermissions");
+    let response = {};
+    if(permissions) {
+      console.log("here 1");
+      response = permissions;
+    } else {
+      console.log("here 2");
+      response = await fetchAllFeatures();
+      window.localStorage.setItem("featurPermissions", JSON.stringify(response));
+    }
+    console.log(Object.hasOwn(response, feature));
+    if(Object.hasOwn(response, feature)) {
+      return Promise.resolve(response[feature])
+    } else {
+      return Promise.reject({
+        success: false,
+        message: "feature does not exist"
+      })
+    }
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
+
+
+getFeatureState("extended-summary")
+ .then(function(isEnabled) {
+ if (isEnabled) {
+ console.log("enabled");
+ } else {
+console.log("not enabled");
+ }
+ }).catch(error => {
+  console.log(error);
+ }) ;
+
+
+
+//f1 -> check -> getFeatureState(f1) -> fetchAllFeatures
+//f2 -> check -> getFeatureState(f2) -> fetchAllFeatures
+
+
+//localstorage to keep user info
+//featurPermissions
+
+async function addDevOverrideForFeature(feature, flagValue) {
+  //update the local storage here
+  const permissions = window.localStorage.getItem("featurPermissions");
+  let response = {};
+  if(permissions) {
+      console.log("here 1");
+      response = permissions;
+    } else {
+      console.log("here 2");
+      response = await fetchAllFeatures();
+    }
+    response[feature] = flagValue;
+    window.localStorage.setItem("featurPermissions", JSON.stringify(response));
+
+}
+
+addDevOverrideForFeature("extended-summary", [1,2,3])
+// After running this, the state of "extended-summary" feature
+// should be considered "on" throughout the whole app for the
+// current developer, no matter what the actual backend state is.

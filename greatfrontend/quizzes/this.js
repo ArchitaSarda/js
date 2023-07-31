@@ -53,4 +53,4 @@ const obj3 = {
         arrow();
     }
 }
-obj.fn();
+obj3.fn();
